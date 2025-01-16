@@ -8,6 +8,14 @@
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1":{},
 		"ghcr.io/devcontainers/features/aws-cli:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-spring-initializr",
+				"vscjava.vscode-java-pack"
+			]
+		}
 	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {}
