@@ -1,0 +1,1 @@
+INSERT INTO todo (id, title, status, user_id, created_at, updated_at) VALUES('123e4567-e89b-12d3-a456-426614174000', 'title1', 'yet', 'user1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
