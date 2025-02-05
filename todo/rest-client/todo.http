@@ -1,0 +1,21 @@
+### POST リクエストの例：Todo を作成する場合
+GET http://localhost:8080/api/v1/todos
+# Content-Type: application/json
+
+# {
+#     "title": "New Todo",
+#     "status": "NOT_STARTED"
+# }
+
+###
+GET http://localhost:8080/api/v1/todos/4d057471-ef3a-4226-8d9e-fb274c6120ac
+
+
+###
+POST http://localhost:8080/api/v1/todos
+Content-Type: application/json
+
+{
+    "title": "New Todo1",
+    "status": "NOT_STARTED"
+}

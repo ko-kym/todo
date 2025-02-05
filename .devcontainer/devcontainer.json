@@ -21,7 +21,8 @@
 				"streetsidesoftware.code-spell-checker",
 				"mhutchie.git-graph",
 				"yzhang.markdown-all-in-one",
-				"mtxr.sqltools-driver-pg"
+				"mtxr.sqltools-driver-pg",
+				"humao.rest-client"
 			]
 		}
 	}
