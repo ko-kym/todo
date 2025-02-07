@@ -22,7 +22,8 @@
 				"mhutchie.git-graph",
 				"yzhang.markdown-all-in-one",
 				"mtxr.sqltools-driver-pg",
-				"humao.rest-client"
+				"humao.rest-client",
+				"ms-vsliveshare.vsliveshare"
 			]
 		}
 	}
