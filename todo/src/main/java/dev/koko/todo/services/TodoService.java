@@ -5,15 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
 import dev.koko.todo.enums.Status;
+import dev.koko.todo.repository.TodoRepository;
 import lombok.NonNull;
 
 @Service
 public class TodoService {
+
+    @Autowired
+    TodoRepository todoRepository;
 
     private static final List<TodoDto> todos = new ArrayList<>() {
         {
@@ -28,7 +33,16 @@ public class TodoService {
     };
 
     public List<TodoDto> findTodos() {
-        return todos;
+        // return todos;
+        return todoRepository.findAll().stream().map(e -> {
+            return TodoDto.builder()
+                .id(e.getId())
+                .title(e.getTitle())
+                .status(e.getStatus())
+                .createdAt(e.getCreatedAt())
+                .updatedAt(e.getUpdatedAt())
+                .build();
+        }).toList();
     }
 
     public TodoDto findTodoById(@NonNull UUID id) {
@@ -53,6 +67,12 @@ public class TodoService {
         todos.add(saved);
 
         return saved;
+    }
+
+    public TodoDto updateTodo(@NonNull UUID id, TodoDto dto){
+        todos.remove(findTodoById(id));
+        todos.add(dto);
+        return dto;
     }
 
     public void removeTodoById(@NonNull UUID id) {

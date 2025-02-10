@@ -2,8 +2,8 @@
 GET http://localhost:8080/api/v1/todos
 
 ###
-@id = 5546bc1c-a65e-4053-a806-d05c1449cc39
-GET http://localhost:8080/api/v1/todos/{{id}}
+@findById = c26fab30-f0d4-4c0b-a493-2f5f7075268c
+GET http://localhost:8080/api/v1/todos/{{findById}}
 
 ###
 POST http://localhost:8080/api/v1/todos
@@ -15,5 +15,18 @@ Content-Type: application/json
 }
 
 ###
-@id = 97c637c0-2a63-4cc8-8fe4-b4e6c0bb6642
-DELETE  http://localhost:8080/api/v1/todos/{{id}}
+@updateId = ce7bb27e-ec3e-4782-adc7-0c6576926d3c
+PUT http://localhost:8080/api/v1/todos/{{updateId}}
+Content-Type: application/json
+
+{
+    "id": "ce7bb27e-ec3e-4782-adc7-0c6576926d3c",
+    "title": "Updated Todo Title",
+    "status": "COMPLETED",
+    "createdAt": "2025-02-10T14:35:12.329081911Z",
+    "updatedAt": "2025-02-10T14:36:12.32911266Z"
+}
+
+###
+@deleteId = 09ab003c-a6db-41e2-8c2e-e1d4cc969608
+DELETE  http://localhost:8080/api/v1/todos/{{deleteId}}

@@ -29,6 +29,9 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	// https://mvnrepository.com/artifact/org.postgresql/postgresql
 	implementation 'org.postgresql:postgresql:42.7.5'
+	// https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
+
 }
 
 tasks.named('test') {

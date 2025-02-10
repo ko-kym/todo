@@ -38,8 +38,8 @@ public class TodoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<TodoDto> createTodo(@RequestBody CreateTodoDto createTodoDto) {
-        final TodoDto savedDto = todoService.saveTodo(createTodoDto);
+    public ResponseEntity<TodoDto> createTodo(@RequestBody CreateTodoDto newDto) {
+        final TodoDto savedDto = todoService.saveTodo(newDto);
         final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedDto.getId()).toUri();
 
@@ -47,8 +47,10 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TodoDto> updateTodo() {
-        return null;
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable UUID id, @RequestBody TodoDto newDto) {
+        final TodoDto updateDto = todoService.updateTodo(id, newDto);
+        
+        return ResponseEntity.ok(updateDto);
     }
 
     @DeleteMapping("/{id}")
