@@ -15,4 +15,7 @@
             VALUES (#{id, jdbcType=VARCHAR}, #{title}, #{status}, #{createdAt}, #{updatedAt})
     </insert>
 
+    <delete id="removeById" parameterType="String">
+        DELETE FROM todo WHERE id = #{id}
+    </delete>
 </mapper>

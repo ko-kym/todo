@@ -67,8 +67,7 @@ public class TodoServiceImpl implements TodoService{
 
     @Override
     public void removeTodoById(@NonNull String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeTodoById'");
+        todoRepository.removeById(id);
     }
     
     private TodoDto toDto(Todo e){

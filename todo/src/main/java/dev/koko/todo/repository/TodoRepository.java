@@ -12,4 +12,5 @@ public interface TodoRepository {
     List<Todo> findAll();
     Todo findById(String id);
     void save(@NonNull Todo todo);
+    void removeById(String id);
 }
