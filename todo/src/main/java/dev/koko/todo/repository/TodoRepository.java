@@ -1,14 +1,15 @@
 package dev.koko.todo.repository;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import dev.koko.todo.entity.Todo;
+import lombok.NonNull;
 
 @Mapper
 public interface TodoRepository {
     List<Todo> findAll();
-    Todo findById(UUID id);
+    Todo findById(String id);
+    void save(@NonNull Todo todo);
 }

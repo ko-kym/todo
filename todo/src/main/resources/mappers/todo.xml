@@ -6,9 +6,13 @@
         SELECT * FROM todo
     </select>
 
-    <select id="findById" parameterType="java.util.UUID" resultType="dev.koko.todo.entity.Todo">
+    <select id="findById" parameterType="String" resultType="dev.koko.todo.entity.Todo">
         SELECT * FROM todo WHERE id = #{id}
     </select>
 
+    <insert id="save" parameterType="dev.koko.todo.entity.Todo">
+        INSERT INTO todo (id, title, status, created_at, updated_at)
+            VALUES (#{id, jdbcType=VARCHAR}, #{title}, #{status}, #{createdAt}, #{updatedAt})
+    </insert>
 
 </mapper>
