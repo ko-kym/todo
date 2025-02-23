@@ -2,7 +2,6 @@ package dev.koko.todo.restcontrollers;
 
 import java.net.URI;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,7 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TodoDto> getTodo(@PathVariable UUID id) {
+    public ResponseEntity<TodoDto> getTodo(@PathVariable String id) {
         return ResponseEntity.ok(todoService.findTodoById(id));
     }
 
@@ -47,14 +46,14 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TodoDto> updateTodo(@PathVariable UUID id, @RequestBody TodoDto newDto) {
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @RequestBody TodoDto newDto) {
         final TodoDto updateDto = todoService.updateTodo(id, newDto);
         
         return ResponseEntity.ok(updateDto);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<TodoDto> deleteTodo(@PathVariable UUID id) {
+    public ResponseEntity<TodoDto> deleteTodo(@PathVariable String id) {
         todoService.removeTodoById(id);
         return ResponseEntity.noContent().build();
     }

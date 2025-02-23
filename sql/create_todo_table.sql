@@ -1,5 +1,5 @@
 CREATE TABLE todo (
-    id UUID PRIMARY KEY, -- 一意のタスク識別子
+    id TEXT PRIMARY KEY, -- 一意のタスク識別子
     title TEXT NOT NULL, -- タスクのタイトル
     status TEXT NOT NULL, -- タスクの状態
     created_at TIMESTAMP NOT NULL, -- タスクの作成日時
