@@ -3,21 +3,21 @@
 <mapper namespace="dev.koko.todo.repository.TodoRepository" >
     
     <select id="findAll" resultType="dev.koko.todo.entity.Todo">
-        SELECT * FROM todo
+        SELECT * FROM todos
     </select>
 
     <select id="findById" parameterType="String" resultType="dev.koko.todo.entity.Todo">
-        SELECT * FROM todo WHERE id = #{id}
+        SELECT * FROM todos WHERE id = #{id}
     </select>
 
     <insert id="save" parameterType="dev.koko.todo.entity.Todo">
-        INSERT INTO todo (id, title, status, created_at, updated_at)
+        INSERT INTO todos (id, title, status, created_at, updated_at)
             VALUES (#{id}, #{title}, #{status}, #{createdAt}, #{updatedAt})
     </insert>
 
     <update id="update" parameterType="dev.koko.todo.entity.Todo">
         UPDATE 
-            todo
+            todos
         SET
             title = #{title},
             status = #{status},
@@ -27,6 +27,6 @@
     </update>
 
     <delete id="removeById" parameterType="String">
-        DELETE FROM todo WHERE id = #{id}
+        DELETE FROM todos WHERE id = #{id}
     </delete>
 </mapper>
