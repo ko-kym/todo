@@ -12,8 +12,19 @@
 
     <insert id="save" parameterType="dev.koko.todo.entity.Todo">
         INSERT INTO todo (id, title, status, created_at, updated_at)
-            VALUES (#{id, jdbcType=VARCHAR}, #{title}, #{status}, #{createdAt}, #{updatedAt})
+            VALUES (#{id}, #{title}, #{status}, #{createdAt}, #{updatedAt})
     </insert>
+
+    <update id="update" parameterType="dev.koko.todo.entity.Todo">
+        UPDATE 
+            todo
+        SET
+            title = #{title},
+            status = #{status},
+            updated_at = #{updatedAt}
+        WHERE
+            id = #{id}
+    </update>
 
     <delete id="removeById" parameterType="String">
         DELETE FROM todo WHERE id = #{id}

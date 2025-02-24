@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
+import dev.koko.todo.dtos.UpdateTodoDto;
 import dev.koko.todo.enums.Status;
 import dev.koko.todo.repository.TodoRepository;
 import lombok.NonNull;
@@ -59,15 +60,16 @@ public class TodoServiceWithMock implements TodoService{
 
         return saved;
     }
-
-    public TodoDto updateTodo(@NonNull String id, TodoDto dto){
-        todos.remove(findTodoById(id));
-        todos.add(dto);
-        return dto;
+    
+    @Override
+    public void updateTodo(@NonNull String id, @NonNull UpdateTodoDto dto) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateTodo'");
     }
-
+    
     public void removeTodoById(@NonNull String id) {
         todos.remove(findTodoById(id));
     }
+
 
 }

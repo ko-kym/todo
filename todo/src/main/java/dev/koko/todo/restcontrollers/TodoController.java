@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
+import dev.koko.todo.dtos.UpdateTodoDto;
 import dev.koko.todo.services.TodoService;
 
 @RestController
@@ -37,19 +38,18 @@ public class TodoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<TodoDto> createTodo(@RequestBody CreateTodoDto newDto) {
-        final TodoDto savedDto = todoService.saveTodo(newDto);
+    public ResponseEntity<TodoDto> createTodo(@RequestBody CreateTodoDto dto) {
+        final TodoDto savedDto = todoService.saveTodo(dto);
         final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedDto.getId()).toUri();
 
         return ResponseEntity.created(location).body(savedDto);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @RequestBody TodoDto newDto) {
-        final TodoDto updateDto = todoService.updateTodo(id, newDto);
-        
-        return ResponseEntity.ok(updateDto);
+    @PatchMapping("/{id}")
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @RequestBody UpdateTodoDto dto) {        
+        todoService.updateTodo(id, dto);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")

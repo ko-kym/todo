@@ -10,7 +10,8 @@ import lombok.NonNull;
 @Mapper
 public interface TodoRepository {
     List<Todo> findAll();
-    Todo findById(String id);
-    void save(@NonNull Todo todo);
-    void removeById(String id);
+    Todo findById(@NonNull String id);
+    void save(@NonNull Todo entity);
+    void update(@NonNull Todo entity);
+    void removeById(@NonNull String id);
 }
