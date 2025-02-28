@@ -19,6 +19,7 @@ import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
 import dev.koko.todo.dtos.UpdateTodoDto;
 import dev.koko.todo.services.TodoService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/todos")
@@ -38,7 +39,7 @@ public class TodoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<TodoDto> createTodo(@RequestBody CreateTodoDto dto) {
+    public ResponseEntity<TodoDto> createTodo(@Valid @RequestBody CreateTodoDto dto) {
         final TodoDto savedDto = todoService.saveTodo(dto);
         final URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedDto.getId()).toUri();
@@ -47,7 +48,7 @@ public class TodoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @RequestBody UpdateTodoDto dto) {        
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @Valid @RequestBody UpdateTodoDto dto) {        
         todoService.updateTodo(id, dto);
         return ResponseEntity.noContent().build();
     }
