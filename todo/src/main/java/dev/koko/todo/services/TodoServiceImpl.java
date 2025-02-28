@@ -13,6 +13,7 @@ import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
 import dev.koko.todo.dtos.UpdateTodoDto;
 import dev.koko.todo.entity.Todo;
+import dev.koko.todo.exceptions.NotFoundException;
 import dev.koko.todo.repository.TodoRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -65,7 +66,7 @@ public class TodoServiceImpl implements TodoService {
             found.setStatus(dto.getStatus());
         }
         found.setUpdatedAt(OffsetDateTime.now());
-        
+
         todoRepository.update(found);
     }
 
@@ -86,6 +87,6 @@ public class TodoServiceImpl implements TodoService {
 
     private Todo _findTodoById(@NonNull String id) {
         return Optional.ofNullable(todoRepository.findById(id))
-                .orElseThrow(() -> new RuntimeException("Not Found"));
+                .orElseThrow(() -> new NotFoundException("Not Found : ".concat(id)));
     }
 }

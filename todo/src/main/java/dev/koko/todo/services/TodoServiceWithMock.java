@@ -12,6 +12,7 @@ import dev.koko.todo.dtos.CreateTodoDto;
 import dev.koko.todo.dtos.TodoDto;
 import dev.koko.todo.dtos.UpdateTodoDto;
 import dev.koko.todo.enums.Status;
+import dev.koko.todo.exceptions.NotFoundException;
 import dev.koko.todo.repository.TodoRepository;
 import lombok.NonNull;
 
@@ -41,7 +42,7 @@ public class TodoServiceWithMock implements TodoService{
         final TodoDto found = todos.stream()
                 .filter(todo -> todo.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Not found.")); // TODO: Error Handling
+                .orElseThrow(() -> new NotFoundException("Not found : ".concat(id)));
 
         return found;
     }
