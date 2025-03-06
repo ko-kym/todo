@@ -1,0 +1,6 @@
+spring:
+  application:
+    name:
+      todo-client
+server:
+  port: 8090
