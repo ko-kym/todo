@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Todo {
+public class TodoDto {
     private String id;
     private String title;
     private Status status;

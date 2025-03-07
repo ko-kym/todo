@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" th:action="@{/creating}" th:object="${createTodoForm}" method="post">
+        <p>title: <input type="text" th:field="*{title}"></p>
+        <p>status: <input type="text" th:field="*{status}"></p>
+        <p><input type="submit" value="作成"></p>
+    </form>
+</body>
+</html>
