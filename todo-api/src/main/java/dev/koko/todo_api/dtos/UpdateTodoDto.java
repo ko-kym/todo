@@ -1,16 +1,18 @@
 package dev.koko.todo_api.dtos;
 
 import dev.koko.todo_api.enums.Status;
-import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Value;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class UpdateTodoDto {
-    @Max(value = 100)
+    @Size(max = 100)
     String title;
     // TODO: Enumアノテーション
     Status status;

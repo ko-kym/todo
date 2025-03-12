@@ -34,7 +34,7 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TodoDto> getTodo(@PathVariable String id) {
+    public ResponseEntity<TodoDto> getTodo(@PathVariable("id") String id) {
         return ResponseEntity.ok(todoService.findTodoById(id));
     }
 
@@ -48,13 +48,13 @@ public class TodoController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<TodoDto> updateTodo(@PathVariable String id, @Valid @RequestBody UpdateTodoDto dto) {        
+    public ResponseEntity<TodoDto> updateTodo(@PathVariable("id") String id, @Valid @RequestBody UpdateTodoDto dto) {        
         todoService.updateTodo(id, dto);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<TodoDto> deleteTodo(@PathVariable String id) {
+    public ResponseEntity<TodoDto> deleteTodo(@PathVariable("id") String id) {
         todoService.removeTodoById(id);
         return ResponseEntity.noContent().build();
     }
